@@ -10,6 +10,7 @@ const origin = "http://localhost:3000";
 app.use(
   cors({
     origin,
+    credentials: true,
   })
 );
 app.use(express.json());
