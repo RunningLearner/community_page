@@ -14,7 +14,6 @@ const Login = () => {
   const { authenticated } = useAuthState();
 
   const dispatch = useAuthDispatch();
-
   if (authenticated) router.push("/");
 
   const handleSubmit = async (event: FormEvent) => {
@@ -32,7 +31,6 @@ const Login = () => {
       );
       dispatch("LOGIN", res.data?.user);
       router.push("/");
-      console.log(res);
     } catch (error: any) {
       console.error(error);
       setErrors(error?.response?.data || {});
