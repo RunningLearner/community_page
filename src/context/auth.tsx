@@ -51,7 +51,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     authenticated: false,
     loading: true,
   });
-  console.log("state", state);
 
   const dispatch = (type: string, payload?: any) => {
     defaultDispatch({ type, payload });
@@ -68,7 +67,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         dispatch("STOP_LOADING");
       }
     }
-  });
+    loadUser();
+  }, []);
 
   return (
     <DispatchContext.Provider value={dispatch}>
