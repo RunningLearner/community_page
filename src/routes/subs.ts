@@ -5,6 +5,19 @@ import authMiddleware from "../middlewares/auth";
 import { isEmpty } from "class-validator";
 import { AppDataSource } from "../data-source";
 import Sub from "../entities/Sub";
+import Post from "../entities/Post";
+
+const getSub = async (req: Request, res: Response) => {
+  const name = req.params.name;
+
+  try {
+    const sub = await Sub.findOneByOrFail({ name });
+
+    return res.json(sub);
+  } catch (error) {
+    return res.status(400).json({ error: "커뮤니티를 찾을 수 없습니다." });
+  }
+};
 
 const createSub = async (req: Request, res: Response, next: NextFunction) => {
   const { name, title, description } = req.body;
@@ -47,8 +60,31 @@ const createSub = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const topSubs = async (_: Request, res: Response) => {
+  try {
+    const imageUrlExp = `COALESCE(s."imageUrn", 'https:www.gravatar.com/avatar?d=mp&f=y')`;
+    const subs = await AppDataSource.createQueryBuilder()
+      .select(
+        `s.title, s.name, ${imageUrlExp} as "imageUrl", count(p.id) as "postCount"`
+      )
+      .from(Sub, "s")
+      .leftJoin(Post, "p", `s.name=p."subName"`)
+      .groupBy('s.title, s.name, "imageUrl"')
+      .orderBy(`"postCount"`, "DESC")
+      .limit(5)
+      .execute();
+
+    return res.json(subs);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
 const router = Router();
 
 router.post("/", userMiddleware, authMiddleware, createSub);
+router.get("/:name", userMiddleware, getSub);
+router.get("/sub/topSubs", topSubs);
 
 export default router;
