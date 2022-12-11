@@ -83,8 +83,6 @@ const login = async (req: Request, res: Response) => {
       "Set-Cookie",
       cookie.serialize("token", token, {
         httpOnly: true,
-        // secure:,
-        // sameSite: 'strict',
         maxAge: 60 * 60 * 24 * 7,
         path: "/",
       })
@@ -96,9 +94,24 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
+const logout = async (_: Request, res: Response) => {
+  res.set(
+    "Set-Cookie",
+    cookie.serialize("token", "", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "development",
+      sameSite: "strict",
+      expires: new Date(0),
+      path: "/",
+    })
+  );
+  res.status(200).json({ success: true });
+};
+
 const router = Router();
 router.post("/register", register);
 router.post("/login", login);
 router.get("/me", userMiddleware, authMiddleware, me);
+router.post("/logout", userMiddleware, authMiddleware, logout);
 
 export default router;
