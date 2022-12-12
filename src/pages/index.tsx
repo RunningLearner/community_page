@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                       className="rounded-full cursor-pointer"
                       alt="Sub"
                       width={24}
-                      height={25}
+                      height={24}
                     />
                   </a>
                 </Link>
