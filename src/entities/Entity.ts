@@ -11,7 +11,7 @@ export default abstract class Entity extends BaseEntity {
   id: number;
 
   @CreateDateColumn()
-  createAd: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
