@@ -3,34 +3,23 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import useSWR from "swr";
+import SideBar from "../../components/SideBar";
 import { useAuthState } from "../../context/auth";
 
 const SubPage = () => {
   const [ownSub, setOwnSub] = useState(false);
   const { authenticated, user } = useAuthState();
-  const fetcher = async (url: string) => {
-    try {
-      const res = await axios.get(url);
-
-      return res.data;
-    } catch (error: any) {
-      throw error.response.data;
-    }
-  };
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const subName = router.query.sub;
-  const { data: sub, error } = useSWR(
-    subName ? `/subs/${subName}` : null,
-    fetcher
-  );
+  const { data: sub, error } = useSWR(subName ? `/subs/${subName}` : null);
 
   useEffect(() => {
     if (!sub || !user) return;
     setOwnSub(authenticated && user.username === sub.username);
   }, [sub]);
-
+  console.log(sub);
   const uploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files === null) return;
 
@@ -118,7 +107,10 @@ const SubPage = () => {
             </div>
           </div>
           {/*포스트와 사이드바*/}
-          <div className=" flex max-w-5xl px-4 pt-5 mx-auto"></div>
+          <div className=" flex max-w-5xl px-4 pt-5 mx-auto">
+            <div className=" w-full md:mr-3 md:w-8/12"></div>
+            <SideBar sub={sub} />
+          </div>
         </>
       )}
     </div>
