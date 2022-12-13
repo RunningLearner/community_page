@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className=" fixed inset-x-0 top-0 z-10 flex items-center justify-between px-5 bg-white">
+    <div className=" fixed inset-x-0 top-0 z-10 flex items-center justify-between px-5 bg-white h-13">
       <span className=" text-2xl font-semibold text-gray-400">
         <Link href="/">Community</Link>
       </span>
@@ -32,7 +32,7 @@ const NavBar: React.FC = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="px-3 py-1 bg-transparent rounded focus:outline-none"
+            className="px-3 py-1 bg-transparent rounded h-7 focus:outline-none"
           />
         </div>
       </div>
@@ -41,7 +41,7 @@ const NavBar: React.FC = () => {
         {!loading &&
           (authenticated ? (
             <button
-              className=" w-20 p-2 mr-2 text-center text-white bg-gray-400 rounded"
+              className=" w-20 px-2 mr-2 text-center text-white bg-gray-400 rounded h-7"
               onClick={handleLogOut}
             >
               로그아웃
@@ -49,12 +49,12 @@ const NavBar: React.FC = () => {
           ) : (
             <>
               <Link href="/login" legacyBehavior>
-                <a className=" w-20 p-2 mr-2 text-center text-blue-500 border border-blue-500 rounded">
+                <a className="w-20 px-2 pt-1 mr-2 text-sm text-center text-blue-500 border border-blue-500 rounded h-7">
                   로그인
                 </a>
               </Link>
               <Link href="/register" legacyBehavior>
-                <a className=" w-20 p-2 mr-2 text-center text-white bg-gray-400 rounded">
+                <a className="w-20 px-2 pt-1 text-sm text-center text-white bg-gray-400 rounded h-7">
                   회원가입
                 </a>
               </Link>
