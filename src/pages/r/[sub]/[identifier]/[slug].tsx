@@ -37,6 +37,28 @@ const PostPage = () => {
   };
   console.log("comment", comments);
 
+  const vote = async (value: number, comment?: Comment) => {
+    if (!authenticated) router.push("/login");
+    //이미 클릭한 버튼을 또 누르면 리셋
+    if (
+      (!comment && value === post?.userVote) ||
+      (comment && comment.userVote === value)
+    ) {
+      value = 0;
+    }
+
+    try {
+      await axios.post("/votes", {
+        identifier,
+        slug,
+        commentIdentifier: comment?.identifier,
+        value,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className=" flex max-w-5xl px-4 pt-5 mx-auto">
       <div className=" w-full md:mr-3 md:w-8/12">
@@ -49,7 +71,7 @@ const PostPage = () => {
                   {/** 좋아요 부분 */}
                   <div
                     className="w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-red-500"
-                    // onClick={() => vote(1)}
+                    onClick={() => vote(1)}
                   >
                     <i
                       className={classNames("fas fa-arrow-up", {
@@ -61,7 +83,7 @@ const PostPage = () => {
                   {/** 싫어요 부분 */}
                   <div
                     className="w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-blue-500"
-                    // onClick={() => vote(-1)}
+                    onClick={() => vote(-1)}
                   >
                     <i
                       className={classNames("fas fa-arrow-down", {
@@ -151,7 +173,7 @@ const PostPage = () => {
                     {/** 좋아요 부분 */}
                     <div
                       className="w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-red-500"
-                      // onClick={() => vote(1, comment)}
+                      onClick={() => vote(1, comment)}
                     >
                       <i
                         className={classNames("fas fa-arrow-up", {
@@ -163,7 +185,7 @@ const PostPage = () => {
                     {/** 싫어요 부분 */}
                     <div
                       className="w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-blue-500"
-                      // onClick={() => vote(-1, comment)}
+                      onClick={() => vote(-1, comment)}
                     >
                       <i
                         className={classNames("fas fa-arrow-down", {
