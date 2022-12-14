@@ -15,7 +15,7 @@ const UserPage = () => {
   if (!data) return null;
 
   return (
-    <div className="flex max-w-5xl px-4 pt-5 mx-auto">
+    <div className="flex max-w-5xl px-4 pt-14 mx-auto">
       {/**유저 포스트 갯글 리스트 */}
       <div className="w-full md:mr-3 md:w-8/12">
         {data.userData.map((data: any) => {
@@ -40,13 +40,13 @@ const UserPage = () => {
                       </a>
                     </Link>{" "}
                     <span>commented on</span>{" "}
-                    <Link href={`/u/${comment.post?.url}`} legacyBehavior>
+                    <Link href={`/r/${comment.post?.url}`} legacyBehavior>
                       <a className="cursor-pointer font-semibold hover:underline">
                         {comment.post?.title}
                       </a>
                     </Link>{" "}
                     <span>•</span>{" "}
-                    <Link href={`/u/${comment.post?.subName}`} legacyBehavior>
+                    <Link href={`/r/${comment.post?.subName}`} legacyBehavior>
                       <a className="cursor-pointer text-black hover:underline">
                         /r/{comment.post?.subName}
                       </a>
