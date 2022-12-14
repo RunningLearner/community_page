@@ -28,7 +28,7 @@ const getUserData = async (req: Request, res: Response) => {
       comments.forEach((c) => c.setUserVote(user));
     }
 
-    let userData: any[];
+    let userData: any[] = [];
 
     posts.forEach((p) => userData.push({ type: "Post", ...p.toJSON() }));
     comments.forEach((c) => userData.push({ type: "Comment", ...c.toJSON() }));
