@@ -34,19 +34,19 @@ const UserPage = () => {
                 </div>
                 <div className="w-full p-2">
                   <p className="mb-2 text-xs text-gray-500">
-                    <Link href={`/u/${comment.username}`}>
+                    <Link href={`/u/${comment.username}`} legacyBehavior>
                       <a className="cursor-pointer hover:underline">
                         {comment.username}
                       </a>
                     </Link>{" "}
                     <span>commented on</span>{" "}
-                    <Link href={`/u/${comment.post?.url}`}>
+                    <Link href={`/u/${comment.post?.url}`} legacyBehavior>
                       <a className="cursor-pointer font-semibold hover:underline">
                         {comment.post?.title}
                       </a>
                     </Link>{" "}
                     <span>•</span>{" "}
-                    <Link href={`/u/${comment.post?.subName}`}>
+                    <Link href={`/u/${comment.post?.subName}`} legacyBehavior>
                       <a className="cursor-pointer text-black hover:underline">
                         /r/{comment.post?.subName}
                       </a>

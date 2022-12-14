@@ -24,11 +24,11 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className=" fixed inset-x-0 top-0 z-10 flex items-center justify-between px-5 bg-white h-13">
+    <div className=" border-b border-gray-200 p-1 fixed inset-x-0 top-0 z-10 flex items-center justify-between px-5 bg-white h-15">
       <span className=" text-2xl font-semibold text-gray-400">
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <a>
-            <Image src="/favocon.ico" alt="logo" width={80} height={45} />
+            <Image src="/flag.png" alt="logo" width={40} height={25} />
           </a>
         </Link>
       </span>

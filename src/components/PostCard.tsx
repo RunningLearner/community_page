@@ -35,7 +35,6 @@ const PostCard = ({
   const router = useRouter();
   const isInSubPage = router.pathname === "/r/[sub]";
   const authenticated = useAuthState();
-  console.log("router.pathname", router.pathname);
 
   const vote = async (value: number) => {
     if (!authenticated) router.push("/login");
@@ -52,7 +51,7 @@ const PostCard = ({
   };
 
   return (
-    <div className="flex mb-4 bg-white rounded" id={identifier}>
+    <div className="flex mb-4 bg-white rounded border" id={identifier}>
       {/** 좋아요 싫어요 기능 부분 */}
       <div className="flex-shrink-0 w-10 py-2 text-center rounded-l">
         {/** 좋아요 부분 */}
@@ -89,7 +88,8 @@ const PostCard = ({
                   src={sub!.imageUrl}
                   alt="sub"
                   className=" rounded-full cursor-pointer"
-                  width={10}
+                  width={12}
+                  height={12}
                 />
               </Link>
               <Link href={`/r/${subName}`} legacyBehavior>

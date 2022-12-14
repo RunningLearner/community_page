@@ -70,7 +70,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className=" flex max-w-5xl px-4 pt-5 mx-auto">
+    <div className=" flex mt-10 max-w-5xl px-4 pt-5 mx-auto">
       {/* 포스트 리스트 */}
       <div className=" w-full md:mr-3 md:2-w/12">
         {isInitialLoading && (
