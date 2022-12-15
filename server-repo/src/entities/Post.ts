@@ -11,7 +11,8 @@ import User from "./User";
 import Sub from "./Sub";
 import { Exclude, Expose } from "class-transformer";
 import BaseEntity from "./Entity";
-import { makeId, slugify } from "../utils/helpers";
+import { makeId } from "../utils/helpers";
+import { slugify } from "transliteration";
 import Vote from "./Vote";
 import Comment from "./Comment";
 
