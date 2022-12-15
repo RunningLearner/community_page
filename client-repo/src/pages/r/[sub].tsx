@@ -37,9 +37,13 @@ const SubPage = () => {
     formData.append("type", fileInputRef.current!.name);
 
     try {
-      await axios.post(`/subs/${sub.name}/upload`, formData, {
-        headers: { "Context-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/api/subs/${sub.name}/upload`,
+        formData,
+        {
+          headers: { "Context-Type": "multipart/form-data" },
+        }
+      );
     } catch (error) {
       console.log(error);
     }

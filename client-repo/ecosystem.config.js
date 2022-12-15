@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "commutnity-client",
+      name: "com-client",
       script: "npm run start:prod",
     },
   ],

@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "commutnity-server",
+      name: "com-server",
       script: "npm run start:prod",
     },
   ],
