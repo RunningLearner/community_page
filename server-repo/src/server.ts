@@ -11,7 +11,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 const app = express();
-const origin = "http://localhost:3000";
+const origin = process.env.ORIGIN;
 
 app.use(
   cors({
@@ -33,10 +33,10 @@ app.use("/api/posts", postRoutes);
 app.use("/api/votes", voteRoutes);
 app.use("/api/users", userRoutes);
 
-let port = 4000;
+let port = process.env.PORT;
 
 app.listen(port, async () => {
-  console.log(`Server listening on http://localhost:${port}`);
+  console.log(`Server listening on ${process.env.APP_URL}`);
 
   AppDataSource.initialize()
     .then(async () => {
