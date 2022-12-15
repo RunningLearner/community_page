@@ -59,9 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     async function loadUser() {
       try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/api/auth/me`
-        );
+        const res = await axios.get("/auth/me");
         dispatch("LOGIN", res.data);
       } catch (error) {
         console.log(error);
