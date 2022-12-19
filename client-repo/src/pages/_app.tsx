@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const fetcher = async (url: string) => {
     try {
       const res = await axios.get(url);
+      console.log('url~~~::',url);
       return res.data;
     } catch (error: any) {
       throw error.res.data;
