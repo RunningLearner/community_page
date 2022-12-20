@@ -14,7 +14,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           password: ${{ secrets.PEM_KEY }}
-          host: "ip-172-31-15-87"
+          host: "ip-172-31-15-87.ap-northeast-2.compute.internal"
           username: ubuntu
           port: 22
           script: whoami
