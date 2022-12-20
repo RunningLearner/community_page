@@ -13,9 +13,8 @@ jobs:
       - name: Run scripts in server
         uses: appleboy/ssh-action@master
         with:
-     #   ${{ secrets.PEM_KEY }}
-          password: 1
-          host: 52.79.176.146
+          password: ${{ secrets.PEM_KEY }}
+          host: ec2-52-79-176-146.ap-northeast-2.compute.amazonaws.com
           username: ubuntu
           port: 22
           script: cd server_repo || npm run build:prod 
