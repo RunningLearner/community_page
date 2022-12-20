@@ -15,6 +15,6 @@ jobs:
         with:
           password: ${{ secrets.PEM_KEY }}
           host: ${{ secrets.HOST }}
-          username: ubuntu
-          port: 22
+          username:  ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
           script: whoami
