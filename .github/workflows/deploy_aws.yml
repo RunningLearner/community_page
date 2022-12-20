@@ -1,0 +1,20 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  AUTO_DEPLOY:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run scripts in server
+        uses: appleboy/ssh-action@master
+        with:
+          password: ${{ secrets.PEM_KEY }}
+          host: 52.79.176.146
+          username: ubuntu
+          port: 22
+          script: cd server_repo || npm run build:prod 
