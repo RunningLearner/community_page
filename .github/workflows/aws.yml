@@ -10,17 +10,12 @@ jobs:
     runs-on: [self-hosted, label-go]
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: build client
+    - name: git pull
       run: |
-        cd client-repo
+        cd ../../../
         pwd
-        cd ../../../../../
-        pwd
-        ls
         cd community_page
-        git pull
+#        git pull
 #        npm install
 #        npm run build:prod
 #    - name: build server
