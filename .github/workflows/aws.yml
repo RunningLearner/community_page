@@ -25,8 +25,9 @@ jobs:
       run : |
         cd ../../../../community_page/server-repo
         npm install
-#    - name: run pm2
-#      run: |
-#        pm2 start ecosystem.config.js
-#        cd ../client-repo
-#        pm2 start ecosystem.config.js
+    - name: run pm2
+      run: |
+        cd ../../../../community_page/client-repo
+        pm2 start ecosystem.config.js
+        cd ../server-repo
+        pm2 start ecosystem.config.js
