@@ -20,6 +20,10 @@ jobs:
         pwd
         ls
         cd community_page
+        ls
+        cd client-repo
+        ls
+        git status
 #        npm install
 #        npm run build:prod
 #    - name: build server
