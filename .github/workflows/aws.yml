@@ -13,6 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: ../../test
+        path: ../
+    - run: pwd
     - name: git pull
       run: mkdir test1
