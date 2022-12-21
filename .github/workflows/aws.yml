@@ -12,10 +12,10 @@ jobs:
     steps:
     - name: git pull
       run: |
-        cd ../../../
+        cd ../../../../
         pwd
         cd community_page
-#        git pull
+        git pull
 #        npm install
 #        npm run build:prod
 #    - name: build server
