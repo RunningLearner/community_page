@@ -18,6 +18,7 @@ jobs:
         git pull
     - name: build client
       run : |
+        pwd
         cd client-repo
         npm install
         npm run build:prod
