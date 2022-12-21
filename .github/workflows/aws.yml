@@ -16,7 +16,7 @@ jobs:
       run: |
         cd client-repo
         pwd
-        npm install
+#        npm install
 #        npm run build:prod
 #    - name: build server
 #      run : |
