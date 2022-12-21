@@ -18,6 +18,8 @@ jobs:
         pwd
         cd ../../../../../
         pwd
+        ls
+        cd community_page
 #        npm install
 #        npm run build:prod
 #    - name: build server
