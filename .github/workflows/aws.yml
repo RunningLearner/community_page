@@ -1,0 +1,16 @@
+name: Deploy to Amazon ECS
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: [self-hosted, label-go]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: git pull
+      run: git pull
