@@ -16,12 +16,11 @@ jobs:
         pwd
         cd community_page
         git pull
-#        npm install
-#        npm run build:prod
-#    - name: build server
-#      run : |
-#        cd ../server-repo
-#        npm install
+    - name: build client
+      run : |
+        cd client-repo
+        npm install
+
 #    - name: run pm2
 #      run: |
 #        pm2 start ecosystem.config.js
