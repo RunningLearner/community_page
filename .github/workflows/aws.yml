@@ -12,4 +12,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - run: pwd
+    - name: build client
+      run: |
+        cd client-repo
+        npm install
+        npm run build:prod
+    - name: build server
+      run : |
+        cd ../server-repo
+        npm install
+    - name: run pm2
+      run: |
+        pm2 start ecosystem.config.js
+        cd ../client-repo
+        pm2 start ecosystem.config.js
