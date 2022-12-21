@@ -18,13 +18,12 @@ jobs:
         git pull
     - name: build client
       run : |
-        pwd
-        cd client-repo
+        cd ../../../../client-repo
         npm install
         npm run build:prod
     - name: build server
       run : |
-        cd ../server-repo
+        cd ../../../../server-repo
         npm install
 #    - name: run pm2
 #      run: |
