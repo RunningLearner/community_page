@@ -4,12 +4,15 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuthDispatch, useAuthState } from "../context/auth";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
   let router = useRouter();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(true);
+
   const [errors, setErrors] = useState<any>({});
   const { authenticated } = useAuthState();
 
@@ -37,6 +40,28 @@ const Login = () => {
     }
   };
 
+  const passwordVisible = (visible: boolean) => {
+    if (visible) {
+      return (
+        <AiFillEye
+          className=" text-gray-500 cursor-pointer"
+          onClick={() => {
+            setVisible(false);
+          }}
+        />
+      );
+    } else {
+      return (
+        <AiFillEyeInvisible
+          className=" text-gray-500 cursor-pointer"
+          onClick={() => {
+            setVisible(true);
+          }}
+        />
+      );
+    }
+  };
+
   return (
     <div className="bg-white">
       <div className="flex flex-col items-center justify-content h-screen p-6">
@@ -54,8 +79,12 @@ const Login = () => {
               value={password}
               setValue={setPassword}
               error={errors.password}
+              visible={visible}
             />
-
+            <div className="flex center mb-2">
+              <p className="text-xs mr-1 text-gray-500">비밀번호 표시</p>
+              {passwordVisible(visible)}
+            </div>
             <button className="w-full py-2 mb-1 text-xs font-bold text-white uppercase bg-gray-400 border border-gray-400 rounded">
               로그인
             </button>
