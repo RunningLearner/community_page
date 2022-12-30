@@ -7,6 +7,7 @@ interface InputGroupProps {
   placeholder?: string;
   value: string;
   error: string | undefined;
+  visible?: boolean;
   setValue: (str: string) => void;
 }
 
@@ -16,8 +17,12 @@ const InputGroup: React.FC<InputGroupProps> = ({
   placeholder = "",
   error,
   value,
+  visible,
   setValue,
 }) => {
+  if (visible) {
+    type = "password";
+  }
   return (
     <div className={className}>
       <input
