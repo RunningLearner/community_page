@@ -11,8 +11,9 @@ nohup ./run.sh &
 # community_page 폴더에서
 docker-compose up -d
 ```
-3. 포트토워딩
+3. 포트포워딩
 ```
+# 80을 3000으로받기
 sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 ```
 4. pm2 실행
